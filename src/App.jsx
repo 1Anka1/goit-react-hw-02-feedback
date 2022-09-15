@@ -6,24 +6,51 @@ import FeedbackOptions from "./components/FeedbackOptions";
 import Statistics from 'components/Statistics';
 
 class App extends Component {
+
 	state = {
 		good: 0,
 		neutral: 0,
 		bad: 0,
   }
-  
-  // countTotalFeedback()
+
+  onLeaveFeedback = feedback => {
+  this.setState(prevState => {
+    const value = prevState[feedback]
+    return {
+      [feedback]: value + 1,
+    }
+  })
+  }
+
+  countTotal() {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  }
+
+  countPercentage(feedback) {
+    const total = this.countTotal();
+    if (!total) {
+      return 0;
+    }
+    const value = this.state[feedback];
+        console.log(value);
+
+    const result = (value / total) * 100;
+    return Number(result.toFixed(2));
+  }
 
   render() {
-    console.log(this)
-    // const { good, neutral, bad } = this.state;
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotal();
+    const positivePercentage = this.countPercentage("good");
 		return (
 			<Section title={'Task - 1 Feedback widget'}>
-        <FeedbackOptions />
-        <Statistics/>
+        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback}/>
+        <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />
       </Section>
 		)
 	}
 }
 
 export default App
+

@@ -1,17 +1,24 @@
-import { Component } from 'react'
+import React from 'react'
 import css from './FeedbackOptions.module.css'
 
-export default class FeedbackOptions extends Component {
-	render() {
-		return (
-			<div>
-				<h1>Please leave feedback</h1>
-				<div className={css.containerFeedbackButton}>
-					<button>Good</button>
-					<button>Neutral</button>
-					<button>Bad</button>
-				</div>
+export default function FeedbackOptions({ onLeaveFeedback }) {
+	return (
+		<div>
+			<h1>Please leave feedback</h1>
+			<div className={css.containerFeedbackButton}>
+				<button className={css.button} onClick={() => onLeaveFeedback('good')}>
+					Good
+				</button>
+				<button
+					className={css.button}
+					onClick={() => onLeaveFeedback('neutral')}
+				>
+					Neutral
+				</button>
+				<button className={css.button} onClick={() => onLeaveFeedback('bad')}>
+					Bad
+				</button>
 			</div>
-		)
-	}
+		</div>
+	)
 }
