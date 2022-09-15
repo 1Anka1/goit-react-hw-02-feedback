@@ -10,7 +10,7 @@ export default function Statistics({ good, neutral, bad, total, positivePercenta
 				<p>Neutral: {neutral}</p>
 				<p>Bad: {bad}</p>
 				<p>Total: {total}</p>
-				<p>Positive Feedback: {positivePercentage}</p>
+				<p>Positive Feedback: {positivePercentage}%</p>
 			</div>
 		</>
 	)

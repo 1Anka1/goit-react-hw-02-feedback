@@ -43,9 +43,11 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     const total = this.countTotal();
     const positivePercentage = this.countPercentage("good");
+
 		return (
 			<Section title={'Task - 1 Feedback widget'}>
-        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback}/>
+        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
+        {/* {!total ? "There is no feedback"} */}
         <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />
       </Section>
 		)
