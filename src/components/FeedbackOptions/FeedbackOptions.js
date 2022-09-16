@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import css from './FeedbackOptions.module.css'
 
@@ -21,4 +22,7 @@ export default function FeedbackOptions({ onLeaveFeedback }) {
 			</div>
 		</div>
 	)
+}
+FeedbackOptions.prototype = {
+	onLeaveFeedback: PropTypes.func.isRequired,
 }
